@@ -8,6 +8,7 @@ Full task spec: [`assignment_description.md`](assignment_description.md)
 |---|---|
 | `hw1_1_315511079.ipynb` | Problem 1: character-level bigram / trigram / RNN / LSTM language models for language identification (EN, FR, ES, PT, DE) |
 | `hw1_2_315511079.ipynb` | Problem 2: Transformer encoder (self-attention from scratch) for patent phrase similarity, Kaggle submission |
+| `hw1_1_315511079.pdf` | Written report covering both problems |
 
 ## Results
 
@@ -30,7 +31,7 @@ Lower perplexity does not always mean higher accuracy; most errors are short Spa
 | Best single model (cosine LR, scaled embedding init, anchor/target interaction pooling) | 0.6206 | 0.2342 |
 | Final: 5-model ensemble | **0.6409** | **0.2233** |
 
-Kaggle leaderboard (Pearson): **0.66983**
+Kaggle leaderboard (Pearson): **0.69829** (best submission); the 5-model ensemble above scored 0.66983
 
 ## How to run
 
