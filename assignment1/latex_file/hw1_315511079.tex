@@ -633,7 +633,9 @@ pattern. The members' sigmoid outputs are averaged.
 \begin{table}[H]
     \centering
     \caption{Validation results of ensemble members 0--5 (best-Pearson
-    checkpoint of each member).}
+    checkpoint of each member). Members 6 and 7 use the D10 and D12
+    feature sets; their logs are not kept in the saved notebook (see
+    Section~\ref{sec:repro}).}
     \label{tab:p2-members}
     \small
     \begin{tabular}{clccc}
@@ -687,5 +689,108 @@ Kaggle leaderboard score of \textbf{0.68679}
     \caption{Kaggle leaderboard score of the final submission (0.68679).}
     \label{fig:p2-kaggle}
 \end{figure}
+
+% ============================================================
+% Reproducibility
+% ============================================================
+
+\section{Reproducibility}
+\label{sec:repro}
+
+Both notebooks run from top to bottom without manual steps. Every
+number, table, and figure in this report comes from a notebook cell, so
+running the notebooks again gives the same results.
+
+\paragraph{Environment.}
+Table~\ref{tab:env} lists the software and hardware used for the reported runs.
+\begin{table}[H]
+    \centering
+    \caption{Software and hardware used for the reported runs.}
+    \label{tab:env}
+    \begin{tabular}{ll}
+        \toprule
+        Item & Setting\\
+        \midrule
+        Language & Python 3.13.15\\
+        Deep-learning library & PyTorch 2.11.0 (CUDA 13.0 build)\\
+        Other libraries & NumPy, pandas, matplotlib, seaborn, scikit-learn (metrics only)\\
+        Device & NVIDIA GPU (\texttt{cuda}) for RNN, LSTM, and Transformer; CPU for $n$-gram\\
+        Problem 2 platform & Kaggle notebook with GPU accelerator\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The $n$-gram models use only Python's standard library (\texttt{collections},
+\texttt{math}), NumPy, and pandas. No $n$-gram library, pretrained model,
+\texttt{torch.nn.MultiheadAttention}, or external labeled data is used.
+
+\paragraph{Data.}
+The course-provided files are used as they are, with no resampling,
+reshuffling, or repartitioning. Problem~1 reads \texttt{train.csv},
+\texttt{val.csv}, and \texttt{test.csv} from the \texttt{problem1}
+folder; the first cell searches for them automatically (current folder
+or \texttt{/kaggle/input}). Problem~2 reads \texttt{train.csv},
+\texttt{val.csv}, and \texttt{test.csv} from \texttt{DATA\_DIR}, which
+is set to the Kaggle competition input folder or to the current folder.
+Both vocabularies are built from \texttt{train.csv} only.
+
+\paragraph{Randomness.}
+Both notebooks set the seed to 42 for \texttt{random}, NumPy, and
+PyTorch (CPU and CUDA) in their first cells. In Problem~2, each
+configuration in (c) and (d) resets the seed to 42 before training, so
+each row of Tables~\ref{tab:p2-heads} and~\ref{tab:p2-tuning} can be
+reproduced on its own. The ensemble in (e) does \emph{not} reset the
+seed between members, on purpose, so that the members differ; running
+the ensemble cell after the earlier cells reproduces the same sequence
+of members. GPU kernels (cuDNN) are not forced to be deterministic, so
+a rerun on a different GPU or driver can change the last digits of the
+losses. Timing and memory values depend on the machine.
+
+\paragraph{Procedure and running time.}
+\begin{itemize}
+    \item \texttt{hw1\_1\_315511079.ipynb}: run all cells. The $n$-gram
+          models take about 4\,s in total, and the ten neural models
+          (5 RNN + 5 LSTM, 10 epochs each) take about 15\,s to train and
+          10\,s to evaluate on the GPU.
+    \item \texttt{hw1\_2\_315511079.ipynb}: run all cells. The main
+          model, the head comparison in (c), the 14 tuning runs in (d),
+          and the 8-member ensemble in (e) take about 2--2.5 hours in
+          total on a Kaggle GPU. The last cell writes
+          \texttt{submission.csv} with the test IDs in their original
+          order and checks the row count and ID order with assertions.
+\end{itemize}
+
+\paragraph{Where each result is produced.}
+Table~\ref{tab:map} lists the notebook section that produces each table and figure.
+\begin{table}[H]
+    \centering
+    \caption{Mapping from report results to notebook sections.}
+    \label{tab:map}
+    \small
+    \begin{tabular}{p{0.48\linewidth}p{0.44\linewidth}}
+        \toprule
+        Result in this report & Notebook section\\
+        \midrule
+        Table~\ref{tab:p1-ngram}, Figure~\ref{fig:p1-ngram-cm} & Problem 1, \S1A\\
+        Figures~\ref{fig:p1-rnn-curves}, \ref{fig:p1-lstm-curves}, \ref{fig:p1-lstm-cm}; Table~\ref{tab:p1-rnn-cm} & Problem 1, \S1B\\
+        Figure~\ref{fig:p1-length}, confusion-pair counts & Problem 1, \S1C\\
+        Table~\ref{tab:p1-summary} & Problem 1, \S1D\\
+        Figure~\ref{fig:p2-curves}, (b) metrics & Problem 2, Sections 16--18\\
+        Table~\ref{tab:p2-heads}, Figure~\ref{fig:p2-heads} & Problem 2, (c)\\
+        Table~\ref{tab:p2-tuning}, Figure~\ref{fig:p2-tuning} & Problem 2, (d)\\
+        Table~\ref{tab:p2-members}, \texttt{submission.csv} & Problem 2, (e) ensemble cells\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\paragraph{Note on the saved ensemble output.}
+The ensemble cell in (e) runs for over an hour and prints about 200
+lines of training log. In the saved notebook, this output stops during
+member 6, and the following submission cell shows no output, because
+the output was cut off when the notebook was saved. The code is
+complete and unchanged. The \texttt{submission.csv} uploaded to Kaggle
+(Figure~\ref{fig:p2-kaggle}) was produced by a full run of these two
+cells. Running them again trains all eight members and writes the
+submission file.
 
 \end{document}
