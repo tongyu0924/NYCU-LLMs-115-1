@@ -1,0 +1,9 @@
+=== 4 steps | 14.8 ms ===
+Once upon a time, there was a little girl named Lily. She loved to play with her her toy bear...,,, she went to school and and saw with..... with the together..... They They played laughed and and and had fun together. The end.
+
+=== 8 steps | 30.3 ms ===
+Once upon a time, there was a little girl named Lily. She loved to play with her toys and day.. One day, she's mom came in visit room room. She saw Lily playing and and. Lily Lily Lily was happy. She They her back and and played with it together. The end.
+
+=== 16 steps | 61.2 ms ===
+Once upon a time, there was a little girl named Lily. She loved to play with her toys and especially candy, especially. One One, day Lily's mom told her to be to the park and play more. But Lily was't want to because she she wanted to eat more candy candy. The end.
+

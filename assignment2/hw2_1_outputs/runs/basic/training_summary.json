@@ -1,0 +1,15 @@
+{
+  "effective_trainable_parameters": 31712,
+  "total_parameters": 31712,
+  "mean_train_seconds_per_epoch": 2.2406611016000113,
+  "inference": {
+    "forward_batch_seconds": 0.00208497600000328,
+    "forward_samples_per_second": 30695.796977950497,
+    "batch_size": 64,
+    "padded_length": 124,
+    "timing_scope": "10 repeated forwards after 3 warmups; data transfer excluded"
+  },
+  "best_validation_accuracy": 0.19133333333333333,
+  "peak_training_allocated_bytes": 97037312,
+  "note": "CPU memory is not GPU allocated memory; no GPU estimate is supplied. Validation excluded from epoch training time."
+}

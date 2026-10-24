@@ -1,0 +1,43 @@
+{
+  "checkpoint": "runs/q4_D_d256_n256_L3_qhead/best.pt",
+  "model_config": {
+    "d": 256,
+    "n": 256,
+    "layers": 3,
+    "dropout": 0.0,
+    "a_min": 0.01,
+    "a_max": 0.99,
+    "head": "query",
+    "head_hidden": 256
+  },
+  "train_config": {
+    "name": "q4_D_d256_n256_L3_qhead",
+    "d": "256",
+    "n": "256",
+    "layers": "3",
+    "dropout": "0.0",
+    "a_min": "0.01",
+    "a_max": "0.99",
+    "head": "query",
+    "head_hidden": "256",
+    "augment": "True",
+    "epochs": "200",
+    "batch_size": "128",
+    "lr": "0.001",
+    "weight_decay": "0.01",
+    "warmup_frac": "0.05",
+    "min_lr_frac": "0.02",
+    "eval_every": "1",
+    "seed": "42",
+    "patience": "40",
+    "ema_decay": "0.995",
+    "data": "data",
+    "out": "runs/q4_D_d256_n256_L3_qhead"
+  },
+  "epoch": 198,
+  "validation": {
+    "loss": 0.030199853579203288,
+    "accuracy": 0.9913333333333333,
+    "count": 1500
+  }
+}

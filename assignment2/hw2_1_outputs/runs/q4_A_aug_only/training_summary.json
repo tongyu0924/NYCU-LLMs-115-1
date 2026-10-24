@@ -1,0 +1,47 @@
+{
+  "name": "q4_A_aug_only",
+  "effective_trainable_parameters": 40032,
+  "best_epoch": 11,
+  "best_validation_accuracy": 0.4066666666666667,
+  "best_validation_loss": 1.2360324503580729,
+  "mean_train_seconds_per_epoch": 3.0987731150952413,
+  "inference": {
+    "forward_batch_seconds": 0.002361985900000718,
+    "forward_samples_per_second": 27095.84337484002,
+    "batch_size": 64,
+    "padded_length": 124,
+    "timing_scope": "10 repeated forwards after 3 warmups; data transfer excluded"
+  },
+  "peak_training_allocated_MiB": 104.98095703125,
+  "environment": {
+    "torch": "2.11.0+cu130",
+    "python": "3.13.16",
+    "device": "cuda",
+    "device_name": "NVIDIA A100-SXM4-40GB",
+    "precision": "float32"
+  },
+  "config": {
+    "name": "q4_A_aug_only",
+    "d": "64",
+    "n": "64",
+    "layers": "2",
+    "dropout": "0.1",
+    "a_min": "0.5",
+    "a_max": "0.99",
+    "head": "linear",
+    "head_hidden": "0",
+    "augment": "True",
+    "epochs": "30",
+    "batch_size": "64",
+    "lr": "0.001",
+    "weight_decay": "0.01",
+    "warmup_frac": "0.03",
+    "min_lr_frac": "0.02",
+    "eval_every": "1",
+    "seed": "42",
+    "patience": "10",
+    "ema_decay": "0.0",
+    "data": "data",
+    "out": "runs/q4_A_aug_only"
+  }
+}

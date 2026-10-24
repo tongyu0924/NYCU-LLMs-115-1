@@ -1,0 +1,27 @@
+{
+  "threads": 2,
+  "command": "train",
+  "model": "gated",
+  "data": "data",
+  "out": "runs/gated",
+  "d": 64,
+  "n": 64,
+  "layers": 2,
+  "epochs": 10,
+  "batch_size": 64,
+  "seed": 42,
+  "limit_train": 0,
+  "limit_val": 0,
+  "dropout": 0.1,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "device": "auto",
+  "environment": {
+    "torch": "2.11.0+cu130",
+    "python": "3.13.16",
+    "device": "cuda",
+    "device_name": "NVIDIA A100-SXM4-40GB",
+    "precision": "float32",
+    "threads": 2
+  }
+}
