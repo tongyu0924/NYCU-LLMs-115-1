@@ -8,6 +8,8 @@ Full task spec: [`assignment_description.md`](assignment_description.md)
 |---|---|
 | `hw2_1_315511079.ipynb` | Problem 1: basic / input-gated diagonal SSM for selective key–value memory, comparison, Q4 improvement and Kaggle submission |
 | `hw2_2_315511079.ipynb` | Problem 2: Masked Diffusion Language Model (MDLM) trained from scratch on TinyStories |
+| `hw2_315511079.pdf` | Written report covering both problems |
+| `latex_file/` | LaTeX source and figures of the report (`hw2_315511079.tex`) |
 | `submission_hw2_1.csv` | Final Kaggle submission for Problem 1 (2,000 rows, `id,answer`) |
 | `hw2_1_outputs/` | Generated `hw2_1.py` / `hw2_1_q4.py`, `final_model_config.json`, per-run histories, curves, failure cases and checkpoints (`runs/`), Kaggle screenshot |
 | `hw2_2_outputs/` | `results.json` (summary, MCE, generations, loss histories), `generations.txt`, loss / MCE figures, tokenizer |
@@ -61,3 +63,5 @@ More decoding steps give more fluent, less repetitive text at proportionally hig
 **Problem 2:** run on a Colab T4. TinyStories is downloaded automatically; the last cell writes `hw2_2_artifacts.zip`.
 
 Datasets are provided by the course and are not included in this repo.
+
+To build the report, compile `latex_file/hw2_315511079.tex` with pdfLaTeX (all figures are in the same folder).
